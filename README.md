@@ -18,7 +18,7 @@ Useful documentation for loading and working with image datasets for classificat
 
   `.prefetch()` overlaps data preprocessing and model execution while training.
   
-```
+  ```
   # Sample Data Pipeline
   
   AUTOTUNE = tf.data.AUTOTUNE
@@ -34,7 +34,7 @@ Useful documentation for loading and working with image datasets for classificat
       .cache()
       .prefetch(buffer_size=AUTOTUNE)
   )
-```
+  ```
 
 - Loading an individual image to np array:
   ```
