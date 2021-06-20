@@ -1,4 +1,4 @@
-# Computer-Vision-kaggle
+# Computer-Vision-practice
 
 Useful documentation for loading and working with image datasets for classification: https://www.tensorflow.org/tutorials/load_data/images
 
