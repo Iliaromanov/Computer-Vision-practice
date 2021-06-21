@@ -44,3 +44,13 @@ Useful documentation for loading and working with image datasets for classificat
   image = tf.image.resize(image, size=[400, 400])
   img = tf.squeeze(image).numpy()
   ```
+  
+- When loading training dataset images with `tf.keras.preprocessing.image_dataset_from_directory`, the keras model adds batch_size to input shape. E.g: given input images of
+  shape `(255, 255, 3)`, the model would use `input_shape=(batch_size, 255, 255, 3)`. 
+  
+  So when making predictions with `model.predict` **don't forget to add the batch_size value as shape[0] of input shape**. Eg: If you want to make prediction on a single image
+  of shape `(255, 255, 3)`, use `model.predict({image tensor}.numpy().reshape(1, 255, 255, 3)`
+  
+  If not done, then this this error is raised:
+  
+  `ValueError: Input 0 is incompatable with layer conv2d: expected ndim={n}, found ndim={n - 1}`
