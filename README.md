@@ -49,7 +49,7 @@ Useful documentation for loading and working with image datasets for classificat
   shape `(255, 255, 3)`, the model would use `input_shape=(batch_size, 255, 255, 3)`. 
   
   So when making predictions with `model.predict` **don't forget to add the batch_size value as shape[0] of input shape**. Eg: If you want to make prediction on a single image
-  of shape `(255, 255, 3)`, use `model.predict({image tensor}.numpy().reshape(1, 255, 255, 3)`
+  of shape `(255, 255, 3)`, use `model.predict({image-tensor}.numpy().reshape(1, 255, 255, 3)`
   
   If not done, then this this error is raised:
   
