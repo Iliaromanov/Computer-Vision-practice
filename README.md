@@ -38,7 +38,7 @@ Useful documentation for loading and working with image datasets for classificat
 
 - Loading an individual image to np array:
   ```
-  image_path = 'path/to/image.jpg'
+  image_path = 'path/to/image.jpeg'
   image = tf.io.read_file(image_path)
   image = tf.io.decode_jpeg(image, channels=1)
   image = tf.image.resize(image, size=[400, 400])
