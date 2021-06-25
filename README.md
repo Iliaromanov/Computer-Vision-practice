@@ -1,6 +1,8 @@
 # Computer-Vision-practice
 
-Useful documentation for loading and working with image datasets for classification: https://www.tensorflow.org/tutorials/load_data/images
+### Useful documentation:
+- Loading and working with image datasets for classification: https://www.tensorflow.org/tutorials/load_data/images
+- Data augmentation methods with `tf.keras.layers.experimenal.preprocessing`: https://www.tensorflow.org/api_docs/python/tf/keras/layers/experimental/preprocessing
 
 ### General Notes:
 - CNN Classifier model: **Images** (input) &rarr; **Base** (feature extraction) &rarr; **Head** (classification) &rarr; **Class** (output)
