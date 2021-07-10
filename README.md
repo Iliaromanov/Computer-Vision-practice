@@ -30,6 +30,7 @@
       .cache()
       .prefetch(buffer_size=AUTOTUNE)
   )
+  
   ds_valid = (
       ds_valid_
       .map(data_preprocessing_func)
