@@ -20,7 +20,7 @@
 
   `.prefetch()` overlaps data preprocessing and model execution while training.
   
-  ```
+  ```python
   # Sample Data Pipeline
   
   AUTOTUNE = tf.data.AUTOTUNE
@@ -40,7 +40,7 @@
   ```
 
 - Loading an individual image to np array:
-  ```
+  ```python
   image_path = 'path/to/image.jpeg'
   image = tf.io.read_file(image_path)
   image = tf.io.decode_jpeg(image, channels=1)
@@ -57,3 +57,20 @@
   If not done, then this this error is raised:
   
   `ValueError: Input 0 is incompatable with layer conv2d: expected ndim={n}, found ndim={n - 1}`
+  
+  
+ - Capture and display webcam video with OpenCV code:
+ 
+  ```python
+  import cv2
+  
+  cap = cv2.VideoCapture(0)  # using webcam 0
+  
+  while True:
+    success, frame = cap.Read()  # get video frame as image array
+    
+    # Put any img processing code here
+    
+    cv2.imshow("Video", frame) # Display frame
+    cv2.waitKey(1)  # Displaying frame for 1ms
+   ```
