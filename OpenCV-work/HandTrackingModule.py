@@ -17,19 +17,30 @@ class HandDetector:
         self.mpDraw = mp.solutions.drawing_utils
 
     def find_hands(self, img, draw=True):
-        height, width, channels = img.shape # get frames dimensions and channels
+        img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # Convert frame img to RGB
+        self.results = self.hands.process(img_rgb)
 
-        img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB) # Convert frame img to RGB
-        results = self.hands.process(img_rgb)
-
-        if results.multi_hand_landmarks:
-            for hand_landmarks in results.multi_hand_landmarks:
+        if self.results.multi_hand_landmarks:
+            for hand_landmarks in self.results.multi_hand_landmarks:
                 if draw:
                     self.mpDraw.draw_landmarks(img, hand_landmarks, self.mpHands.HAND_CONNECTIONS)
-
         return img
-        # for id, lm in enumerate(hand_landmarks):
-        #     x_pos, y_pos = int(lm.x * width), int(lm.y * height)
+
+    def find_positions(self, img, hand_num=0, draw=True):
+        height, width, channels = img.shape  # get frames dimensions and channels
+
+        landmark_positions = []
+
+        if self.results.multi_hand_landmarks:
+            hand = self.results.multi_hand_landmarks[hand_num]  # Get landmarks for specified hand
+
+            for id, lm in enumerate(hand.landmark):
+                x_pos, y_pos = int(lm.x * width), int(lm.y * height)
+                landmark_positions.append((id, x_pos, y_pos))
+                if draw and id == 8:
+                    cv2.circle(img, (x_pos, y_pos), 15, (255, 255, 0), cv2.FILLED)
+
+        return landmark_positions
 
 
 def main():
@@ -44,6 +55,10 @@ def main():
     while True:
         success, img = capture.read()  # Get img frame
         img = detector.find_hands(img)
+
+        lm_list = detector.find_positions(img)
+        if len(lm_list) > 0:
+            print(lm_list[8])  # 8 = index finger tip
 
         # Calculate frame rate
         c_time = time.time()
