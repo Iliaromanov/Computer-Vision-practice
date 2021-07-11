@@ -74,3 +74,15 @@
     cv2.imshow("Video", frame) # Display frame
     cv2.waitKey(1)  # Displaying frame for 1ms
    ```
+   
+  - Resize output video window size code:
+ 
+  ```python
+  
+  '''Capture video frame or img code'''
+  
+  cv2.namedWindow('Resized Window', cv2.WINDOW_NORMAL)  # Create cv2 window
+  cv2.resizeWindow('Resized Window', 1500, 1000)  # Resize created window
+  
+  cv2.imshow('Resized Window', name_of_retrieved_frame_var)  # Display your img in the created resized window
+  ```
