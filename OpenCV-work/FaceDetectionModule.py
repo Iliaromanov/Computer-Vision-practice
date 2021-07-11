@@ -11,7 +11,7 @@ class FaceDetector:
         self.face_detection = self.mp_face_detect.FaceDetection(min_detection_confidence)
         self.mp_draw = mp.solutions.drawing_utils
 
-    def find_face(self, img, draw=True):
+    def find_faces(self, img, draw=True):
         h, w, c = img.shape
         img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         results = self.face_detection.process(img)
@@ -40,7 +40,7 @@ def main():
 
     while True:
         success, img = cap.read()
-        img, positions = detector.find_face(img)
+        img, positions = detector.find_faces(img)
         print(positions)
         cv2.imshow("Image", img)
         cv2.waitKey(1)
