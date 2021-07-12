@@ -15,6 +15,7 @@ draw_specs = mp_draw.DrawingSpec(circle_radius=1, thickness=1)
 
 while True:
     success, img = cap.read()
+    h, w, c = img.shape
     img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
     results = face_mesh.process(img_rgb)
@@ -23,6 +24,9 @@ while True:
     if landmarks:
         for face_lms in landmarks:
             mp_draw.draw_landmarks(img, face_lms, mp_face_mesh.FACE_CONNECTIONS, draw_specs, draw_specs)
+            for lm in face_lms.landmark:
+                x_pos, y_pos = lm.x * w, lm.y * h
+                print(x_pos, y_pos)
 
     cv2.imshow("Face Mesh", img)
     cv2.waitKey(1)
