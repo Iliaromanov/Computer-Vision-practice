@@ -86,3 +86,11 @@
   
   cv2.imshow('Resized Window', name_of_retrieved_frame_var)  # Display your img in the created resized window
   ```
+  OR change the size of video capture
+  ```python
+  cap_width, cap_height = 750, 700  # Define dimensions
+  
+  capture = cv2.VideoCapture(0)
+  capture.set(3, cap_width)  # id 3 => capture window width
+  capture.set(4, cap_height)  # id 4 => capture window height
+  ```
